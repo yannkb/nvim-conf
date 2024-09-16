@@ -79,7 +79,7 @@ require("lazy").setup({
       dependencies = { 'nvim-lua/plenary.nvim' },
       config = function()
         require('crackboard').setup({
-          session_key = 'xx',
+          session_key = '51f3ec29f70bd4937eeb6619fc2ee6fd564af5f7a215464cb981aebc0b86965c',
         })
       end,
     }

@@ -13,67 +13,18 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
--- avante.nvim
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
 -- Default splitting will cause your main splits to jump when opening an edgebar.
 -- To prevent this, set `splitkeep` to either `screen` or `topline`.
 vim.opt.splitkeep = "screen"
--- avante.nvim
 
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
-    { import = "plugins" },
-    -- avante.nvim
-    {
-      "yetone/avante.nvim",
-      event = "VeryLazy",
-      lazy = false,
-      version = false, -- set this if you want to always pull the latest change
-      opts = {
-        -- add any opts here
-      },
-      -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-      build = "make",
-      -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-      dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "stevearc/dressing.nvim",
-        "nvim-lua/plenary.nvim",
-        "MunifTanjim/nui.nvim",
-        --- The below dependencies are optional,
-        "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-        "zbirenbaum/copilot.lua",      -- for providers='copilot'
-        {
-          -- support for image pasting
-          "HakonHarnes/img-clip.nvim",
-          event = "VeryLazy",
-          opts = {
-            -- recommended settings
-            default = {
-              embed_image_as_base64 = false,
-              prompt_for_file_name = false,
-              drag_and_drop = {
-                insert_mode = true,
-              },
-              -- required for Windows users
-              use_absolute_path = true,
-            },
-          },
-        },
-        {
-          -- Make sure to set this up properly if you have lazy=true
-          'MeanderingProgrammer/render-markdown.nvim',
-          opts = {
-            file_types = { "markdown", "Avante" },
-          },
-          ft = { "markdown", "Avante" },
-        },
-      },
-    }
+    { import = "plugins" }
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
